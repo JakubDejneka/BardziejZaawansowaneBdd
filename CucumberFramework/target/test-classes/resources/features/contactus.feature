@@ -10,4 +10,3 @@ Scenario: Submit valid data via contact us form
 	|example comment one | example comment two |
 	When i click on the submit button
 	Then the information should successfully be submitted via the contact us form
-	

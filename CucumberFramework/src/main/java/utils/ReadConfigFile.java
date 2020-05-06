@@ -1,12 +1,13 @@
 package utils;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public class ReadConfigFile {
-	protected InputStream input = null;
-	protected Properties prop = null;
+	public InputStream input = null;
+	public Properties prop = null;
 
 	public ReadConfigFile() {
 		try {
@@ -22,5 +23,12 @@ public class ReadConfigFile {
 		if (prop.getProperty("browser") == null)
 			return "";
 		return prop.getProperty("browser");
+	}
+	
+	public String readPropertiesFileForCMD(String term) throws IOException {
+		Properties p = new Properties();
+		FileInputStream fi = new FileInputStream(System.getProperty("user.dir") + "\\src\\main\\java\\properties\\config.properties");
+		p.load(fi);
+		return p.getProperty(term.toLowerCase());
 	}
 }
